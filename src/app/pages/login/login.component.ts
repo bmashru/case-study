@@ -8,7 +8,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+/**
+ * LoginComponent is used to retrieve auth_token from route and authenticate apllication
+ */
 export class LoginComponent implements OnInit, OnDestroy {
+
   progressPercentage: Number = 33;
   routerSubscription: Subscription;
   constructor(
@@ -29,13 +33,17 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * This method is fetching OAUTH 2.0 token and stres it in localstorage
+   * @param authToken required to fetch token
+   */
   authenticateApplication(authToken) {
     this.authService.getAccessToken(authToken).subscribe(res => {
       localStorage.setItem('csauth', JSON.stringify(res));
       this.setProgressPercentage(100);
       setTimeout(() => this.router.navigate(['questionnaire']), 4000);
     },
-      error => {
+      _error => {
         this.navigateToUnauthorizedPage();
       });
   }

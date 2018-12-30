@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './unauthorized.component.html',
   styleUrls: ['./unauthorized.component.scss']
 })
+/**
+ * UnauthorizedComponent is static page with authentication information
+ */
 export class UnauthorizedComponent implements OnInit {
 
   constructor() { }

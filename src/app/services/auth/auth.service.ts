@@ -21,6 +21,10 @@ export class AuthService {
     this.oAuthConfig = this.clientConfigService.get().oAuthConfigs;
   }
 
+  /**
+   * This method is fetching OAUTH 2.0 through HTTP server call
+   * @param authToken required to fetch token
+   */
   public getAccessToken(authToken): Observable<any> {
     const body = this.oAuthConfig;
     body['auth_token'] = authToken;
@@ -36,12 +40,18 @@ export class AuthService {
       );
   }
 
+  /**
+   * This method is used to check OAUTH 2.0 token validity
+   */
   public isSessionAlive(): boolean {
     const MILLI_SECOND = 1000;
     const tokenObj = JSON.parse(localStorage.getItem(AuthService.STORAGE_KEY));
     return tokenObj && ((tokenObj.created_at + tokenObj.expires_in) * MILLI_SECOND) > new Date().getTime();
   }
 
+  /**
+   * This method is used to convert object into single set of HttpParms
+   */
   private toHttpParams(obj: Object): HttpParams {
     return Object.getOwnPropertyNames(obj)
       .reduce((p, key) => p.set(key, obj[key]), new HttpParams());

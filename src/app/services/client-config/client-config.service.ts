@@ -21,6 +21,10 @@ export class ClientConfigService {
   }
 }
 
+/**
+ * This constant is provided and gets invoked while application init to load
+ * client cofig before other operations
+ */
 export const CONFIGURATION_INITIALIZER = {
   provide: APP_INITIALIZER,
   useFactory: (service: ClientConfigService) => () => service.init(),

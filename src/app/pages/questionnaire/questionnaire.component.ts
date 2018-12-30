@@ -20,6 +20,9 @@ import { trigger, transition, animate, style } from '@angular/animations';
     ])
   ]
 })
+/**
+ * QuestionnaireComponent is used to display case study questions in form of slideshow
+ */
 export class QuestionnaireComponent implements OnInit, OnDestroy {
 
   caseStudySubscription: Subscription;
@@ -40,6 +43,9 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * This method is used to shift question list arry left with 1 elemnt
+   */
   slideLeft() {
     this.clearInterval();
     this.caseStudyQuestions.unshift(this.caseStudyQuestions.pop());
@@ -47,6 +53,9 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     this.playSlideShow();
   }
 
+  /**
+   * This method is used to shift question list arry right with 1 elemnt
+   */
   slideRight() {
     this.clearInterval();
     this.caseStudyQuestions.push(this.caseStudyQuestions.shift());
@@ -59,6 +68,9 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     setTimeout(() => this.displayQuestion = this.caseStudyQuestions[0].body, 500);
   }
 
+  /**
+   * This method is used to shift question list arry right at certain interval
+   */
   playSlideShow() {
     this.intervalRef = setInterval(() => this.slideRight(), 3000);
   }
