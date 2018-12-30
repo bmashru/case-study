@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" class="questionnaire-main">
+  <div>
+    <button mat-fab color="primary" (click)="slideLeft()">
+      <i class="material-icons">
+        arrow_back_ios
+      </i>
+    </button>
+  </div>
+  <div class="card-holder">
+    <mat-card [@slideInOut] class="question-card" *ngIf="displayQuestion">
+      <mat-card-header>
+        <mat-card-title>Question</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div [innerHTML]="displayQuestion"></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div>
+    <button mat-fab color="primary" (click)="slideRight()">
+      <i class="material-icons">
+        arrow_forward_ios
+      </i>
+    </button>
+  </div>
+</div>
