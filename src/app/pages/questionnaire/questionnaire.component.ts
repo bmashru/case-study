@@ -29,7 +29,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
   visible: Boolean = false;
   caseStudyQuestions: any[] = [];
   displayQuestion: String = '';
-  intervalRef: NodeJS.Timer;
+  intervalRef: any;
 
   constructor(
     private caseStudyService: CaseStudyService
